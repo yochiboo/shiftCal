@@ -14,6 +14,7 @@ class DateAdapter extends BaseAdapter {
 
     private Context mContext;
     private LayoutInflater mLayoutInflater;
+    private Timestamp top = null;
 
     private static class DateViewHolder {
         public TextView  title;
@@ -21,7 +22,13 @@ class DateAdapter extends BaseAdapter {
     }
 
     DateAdapter(Context context) {
-        mLayoutInflater = LayoutInflater.from(context);
+      mContext = context;
+      mLayoutInflater = LayoutInflater.from(context);
+
+      if(top == null){
+        top = new Date();
+        
+      }
     }
 
     public int getCount() {
