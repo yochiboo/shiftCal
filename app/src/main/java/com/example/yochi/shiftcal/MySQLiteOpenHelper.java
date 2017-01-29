@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-static public class MySQLiteOpenHelper extends SQLiteOpenHelper {
+public static class MySQLiteOpenHelper extends SQLiteOpenHelper {
 
     static final String DB = "shiftCal.db";
     static final int DB_VERSION = 1;

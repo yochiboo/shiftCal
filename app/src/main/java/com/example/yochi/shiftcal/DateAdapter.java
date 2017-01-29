@@ -1,11 +1,17 @@
 package com.example.yochi.shiftcal;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import java.util.Date;
+import java.sql.Timestamp;
 
 /**
  * Created by yochi on 2017/01/17.
@@ -27,11 +33,11 @@ class DateAdapter extends BaseAdapter {
       mLayoutInflater = LayoutInflater.from(context);
 
       if(top == null){
-        top = new Date();
+        top = new Timestamp(new Date().getTime());
 
       }
 
-      MySQLiteOpenHelper hlpr = new MySQLiteOpenHelper(getApplicationContext());
+      MySQLiteOpenHelper hlpr = new MySQLiteOpenHelper(mContext);
       mydb = hlpr.getWritableDatabase();
       Cursor cursor = mydb.query("cal", new String[] {"_id", "data"}, null, null, null, null, "_id DESC");
 
@@ -54,11 +60,11 @@ class DateAdapter extends BaseAdapter {
 
       DateViewHolder holder;
       if (convertView == null) {
-        convertView = mLayoutInflater.inflate(R.layout.cell_layout, null);
+        convertView = mLayoutInflater.inflate(R.layout.date_layout, null);
         holder = new DateViewHolder();
         convertView.setTag(holder);
       } else {
-          holder = (ViewHolder)convertView.getTag();
+          holder = (DateViewHolder)convertView.getTag();
       }
 
       holder.title.setText((String)getItem(position));

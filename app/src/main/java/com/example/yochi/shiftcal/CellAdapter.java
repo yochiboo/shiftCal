@@ -58,7 +58,7 @@ public class CellAdapter extends BaseAdapter {
 //            holder = (ViewHolder)convertView.getTag();
 //        }
 
-        convertView = mLayoutInflater.inflate(R.layout.cell_layout, null);
+        convertView = mLayoutInflater.inflate(R.layout.date_layout, null);
         DateViewHolder holder = new DateViewHolder();
         holder.titleTextView.setText((String)getItem(position));
         holder.titleTextView.setText((String)getItem(position));
