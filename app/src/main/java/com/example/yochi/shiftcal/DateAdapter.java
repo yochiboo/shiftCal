@@ -33,6 +33,7 @@ class DateAdapter extends BaseAdapter {
       mLayoutInflater = LayoutInflater.from(context);
 
       if(top == null){
+        // 現在月の１日の曜日からカレンダー表示の左上日付を求める
         top = new Timestamp(new Date().getTime());
 
       }
