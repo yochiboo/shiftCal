@@ -33,7 +33,8 @@ class DateAdapter extends BaseAdapter {
 
       MySQLiteOpenHelper hlpr = new MySQLiteOpenHelper(getApplicationContext());
       mydb = hlpr.getWritableDatabase();
-      
+      Cursor cursor = mydb.query("cal", new String[] {"_id", "data"}, null, null, null, null, "_id DESC");
+
     }
 
     public int getCount() {
