@@ -14,6 +14,7 @@ class DateAdapter extends BaseAdapter {
 
     private Context mContext;
     private LayoutInflater mLayoutInflater;
+    private SQLiteDatabase mydb;
     private Timestamp top = null;
 
     private static class DateViewHolder {
@@ -27,8 +28,12 @@ class DateAdapter extends BaseAdapter {
 
       if(top == null){
         top = new Date();
-        
+
       }
+
+      MySQLiteOpenHelper hlpr = new MySQLiteOpenHelper(getApplicationContext());
+      mydb = hlpr.getWritableDatabase();
+      
     }
 
     public int getCount() {
