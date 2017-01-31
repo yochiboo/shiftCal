@@ -37,11 +37,21 @@ class DateAdapter extends BaseAdapter {
         top = new Timestamp(new Date().getTime());
 
       }
+      // カレンダー最終日（top+42日）
+      Timestamp bottom = new Timestamp(top.getTime());
 
+      // calテーブルからカレンダー表示分のデータ取得
       MySQLiteOpenHelper hlpr = new MySQLiteOpenHelper(mContext);
       mydb = hlpr.getWritableDatabase();
-      Cursor cursor = mydb.query("cal", new String[] {"_id", "data"}, null, null, null, null, "_id DESC");
-
+      String format = "select date, shift from cal where date bitween %s and %s";
+      String sql = String.format(format, top, bottom);
+      Cursor c = mydb.rawQuery(sql);
+      f(c.moveToFirst()){
+        do{
+          long date = c.getLong(c.getColumnIndex("date"));
+          long shift = c.getLong(c.getColumnIndex("shift"));
+        }while(c.moveToNext());
+      }
     }
 
     public int getCount() {
