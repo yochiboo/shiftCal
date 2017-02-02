@@ -20,7 +20,6 @@ class DateAdapter extends BaseAdapter {
 
     private Context mContext;
     private LayoutInflater mLayoutInflater;
-    private SQLiteDatabase mydb;
     private Timestamp top = null;
 
     private static class DateViewHolder {
@@ -41,17 +40,7 @@ class DateAdapter extends BaseAdapter {
       Timestamp bottom = new Timestamp(top.getTime());
 
       // calテーブルからカレンダー表示分のデータ取得
-      MySQLiteOpenHelper hlpr = new MySQLiteOpenHelper(mContext);
-      mydb = hlpr.getWritableDatabase();
-      String format = "select date, shift from cal where date bitween %s and %s";
-      String sql = String.format(format, top, bottom);
-      Cursor c = mydb.rawQuery(sql);
-      f(c.moveToFirst()){
-        do{
-          long date = c.getLong(c.getColumnIndex("date"));
-          long shift = c.getLong(c.getColumnIndex("shift"));
-        }while(c.moveToNext());
-      }
+      ShiftDao dao = new ShiftDao();
     }
 
     public int getCount() {
