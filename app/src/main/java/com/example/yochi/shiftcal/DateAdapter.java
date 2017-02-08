@@ -31,16 +31,7 @@ class DateAdapter extends BaseAdapter {
       mContext = context;
       mLayoutInflater = LayoutInflater.from(context);
 
-      if(top == null){
-        // 現在月の１日の曜日からカレンダー表示の左上日付を求める
-        top = new Timestamp(new Date().getTime());
-
-      }
-      // カレンダー最終日（top+42日）
-      Timestamp bottom = new Timestamp(top.getTime());
-
-      // calテーブルからカレンダー表示分のデータ取得
-      ShiftDao dao = new ShiftDao();
+      moveMonth(new Date().getTime());
     }
 
     public int getCount() {
@@ -70,5 +61,17 @@ class DateAdapter extends BaseAdapter {
       holder.title.setText((String)getItem(position));
 
       return convertView;
+    }
+
+    public moveMonth(Timestamp month){
+
+        // 現在月の１日の曜日からカレンダー表示の左上日付を求める
+        top = DateUtil.getMonthlyCalendarTop(month);
+        // カレンダー最終日（top+42日）
+        Timestamp bottom = DateUtil.getMonthlyCalendarLast(month);
+
+        // calテーブルからカレンダー表示分のデータ取得
+        ShiftDao dao = new ShiftDao();
+        ArrayList<ShiftDao> shiftList = dao.getMonthlyShift(top, bottom);
     }
 }
