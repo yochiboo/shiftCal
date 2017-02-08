@@ -21,6 +21,7 @@ class DateAdapter extends BaseAdapter {
     private Context mContext;
     private LayoutInflater mLayoutInflater;
     private Timestamp top = null;
+    private ArrayList<ShiftDao> shiftList = null;
 
     private static class DateViewHolder {
         public TextView  title;
