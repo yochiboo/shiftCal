@@ -3,6 +3,7 @@ package com.example.yochi.shiftcal.dao;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import com.example.yochi.shiftcal.*;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -39,8 +40,6 @@ class ShiftDao {
 
     // カレンダーデータ更新
     public void updateCalendarDate(CalendarData cal){
-
-
         ArrayList<CalendarData> result = new ArrayList<CalendarData>();
         String sql = "select c.date, c.shift s.title s.color from cal c, shift s where c.date between ? and ? and c.shift = s.shift";
         Cursor c = openDb().rawQuery(sql, new String[]{Long.toString(from.getTime()), Long.toString(to.getTime())});
