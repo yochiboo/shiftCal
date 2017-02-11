@@ -73,6 +73,6 @@ class DateAdapter extends BaseAdapter {
 
         // calテーブルからカレンダー表示分のデータ取得
         ShiftDao dao = new ShiftDao();
-        ArrayList<ShiftDao> shiftList = dao.getMonthlyShift(top, bottom);
+        ArrayList<ShiftData> shiftList = dao.getMonthlyShift(top, bottom);
     }
 }
