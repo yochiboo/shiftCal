@@ -21,6 +21,7 @@ class DateAdapter extends BaseAdapter {
     private Context mContext;
     private LayoutInflater mLayoutInflater;
     private Timestamp top = null;
+    ArrayList<CalendarData> calList = null;
 
     private static class DateViewHolder {
         public TextView  title;
@@ -72,6 +73,6 @@ class DateAdapter extends BaseAdapter {
 
         // calテーブルからカレンダー表示分のデータ取得
         ShiftDao dao = new ShiftDao();
-        ArrayList<ShiftData> shiftList = dao.getMonthlyShift(top, bottom);
+        calList = dao.getMonthlyShift(top, bottom);
     }
 }
