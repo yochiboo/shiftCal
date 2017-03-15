@@ -1,4 +1,4 @@
-package com.example.yochi.shiftcal;
+package com.example.yochi.shiftcal.view;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,6 +9,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridView;
+
+import com.example.yochi.shiftcal.R;
 
 public class MainActivity extends AppCompatActivity {
 

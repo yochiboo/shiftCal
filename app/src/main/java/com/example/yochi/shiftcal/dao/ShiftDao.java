@@ -3,12 +3,14 @@ package com.example.yochi.shiftcal.dao;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import com.example.yochi.shiftcal.*;
+
+import com.example.yochi.shiftcal.model.CalendarData;
+import com.example.yochi.shiftcal.model.ShiftData;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
-class ShiftDao {
+public class ShiftDao {
 
     public Long date = null;
     public Integer shift = null;

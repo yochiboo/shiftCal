@@ -1,17 +1,21 @@
-package com.example.yochi.shiftcal;
+package com.example.yochi.shiftcal.view;
 
 import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.sql.Timestamp;
+
+import com.example.yochi.shiftcal.model.CalendarData;
+import com.example.yochi.shiftcal.misc.DateUtil;
+import com.example.yochi.shiftcal.R;
+import com.example.yochi.shiftcal.dao.*;
+
 
 /**
  * Created by yochi on 2017/01/17.
@@ -32,7 +36,7 @@ class DateAdapter extends BaseAdapter {
       mContext = context;
       mLayoutInflater = LayoutInflater.from(context);
 
-      moveMonth(new Date().getTime());
+      moveMonth((Timestamp) new Date());
     }
 
     public int getCount() {
@@ -64,7 +68,7 @@ class DateAdapter extends BaseAdapter {
       return convertView;
     }
 
-    public moveMonth(Timestamp month){
+    public void moveMonth(Timestamp month){
 
         // 現在月の１日の曜日からカレンダー表示の左上日付を求める
         top = DateUtil.getMonthlyCalendarTop(month);
@@ -72,7 +76,7 @@ class DateAdapter extends BaseAdapter {
         Timestamp bottom = DateUtil.getMonthlyCalendarLast(month);
 
         // calテーブルからカレンダー表示分のデータ取得
-        ShiftDao dao = new ShiftDao();
+        ShiftDao dao = new ShiftDao(mContext);
         calList = dao.getMonthlyShift(top, bottom);
     }
 }

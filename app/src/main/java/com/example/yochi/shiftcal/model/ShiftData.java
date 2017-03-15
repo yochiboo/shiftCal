@@ -1,4 +1,4 @@
-package com.example.yochi.shiftcal;
+package com.example.yochi.shiftcal.model;
 
 public class ShiftData {
     public Integer shift = 0;

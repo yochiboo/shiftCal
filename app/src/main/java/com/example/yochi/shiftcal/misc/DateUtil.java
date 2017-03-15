@@ -1,15 +1,15 @@
-package com.example.yochi.shiftcal;
+package com.example.yochi.shiftcal.misc;
 
 import java.sql.Timestamp;
 import java.util.Calendar;
 
-class DateUtil {
+public class DateUtil {
 
   static final int MONTHLY_CALENDAR_DAY_NUM = 42;
 
 
   // カレンダーTOP日付取得
-  public Timestamp getMonthlyCalendarTop(Timestamp month){
+  public static Timestamp getMonthlyCalendarTop(Timestamp month){
       Calendar top = Calendar.getInstance();
       top.setTime(month);
 
@@ -20,7 +20,7 @@ class DateUtil {
   }
 
   // カレンダーLAST日付取得
-  public Timestamp getMonthlyCalendarLast(Timestamp month){
+  public static Timestamp getMonthlyCalendarLast(Timestamp month){
 
       Timestamp top = getMonthlyCalendarTop(month);
       Calendar last = Calendar.getInstance();
