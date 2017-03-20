@@ -12,9 +12,6 @@ import java.util.ArrayList;
 
 public class ShiftDao {
 
-    public Long date = null;
-    public Integer shift = null;
-
     private Context context = null;
     private SQLiteDatabase mydb = null;
 
