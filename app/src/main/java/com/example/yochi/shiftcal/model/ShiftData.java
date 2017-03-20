@@ -1,6 +1,6 @@
-package com.example.yochi.model.shiftcal;
+package com.example.yochi.shiftcal.model;
 
-class ShiftData {
+public class ShiftData {
     public Integer shift = 0;
     public String title = "";
     public String color = "";

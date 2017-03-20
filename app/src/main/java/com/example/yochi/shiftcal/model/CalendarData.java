@@ -1,4 +1,4 @@
-package com.example.yochi.shiftcal;
+package com.example.yochi.shiftcal.model;
 
 public class CalendarData {
     public Long date = null;
