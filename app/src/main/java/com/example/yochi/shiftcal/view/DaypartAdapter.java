@@ -1,4 +1,4 @@
-package com.example.yochi.shiftcal.view;
+package com.example.yochi.shiftcal;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,8 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-
-import com.example.yochi.shiftcal.R;
 
 /**
  * Created by yochi on 2017/01/17.
