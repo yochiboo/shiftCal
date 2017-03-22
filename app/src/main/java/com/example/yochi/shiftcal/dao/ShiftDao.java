@@ -41,9 +41,20 @@ public class ShiftDao {
     return result;
   }
 
+  // カレンダーデータ有無
+  public Integer isExistCalendarDate(CalendarData cal){
+    ArrayList<CalendarData> result = new ArrayList<CalendarData>();
+    String sql = "select count(*) as count from cal c, shift s where c.date = ? and c.shift = ?";
+    String sqlFormat = "insert into cal (date, shift) values (%d, %d)";
+    Cursor c = openDb().rawQuery(String.format(sqlFormat, cal.date, cal.shift), null);
+    c.moveToFirst();
+    int count = c.getInt(c.getColumnIndex("count"));
+    c.close();
+    return count;
+  }
+
   // カレンダーデータ挿入
   public void insertCalendarDate(CalendarData cal){
-    ArrayList<CalendarData> result = new ArrayList<CalendarData>();
     String sqlFormat = "insert into cal (date, shift) values (%d, %d)";
     Cursor c = openDb().rawQuery(String.format(sqlFormat, cal.date, cal.shift), null);
     c.moveToFirst();
@@ -52,7 +63,6 @@ public class ShiftDao {
 
   // カレンダーデータ更新
   public void updateCalendarDate(CalendarData cal){
-    ArrayList<CalendarData> result = new ArrayList<CalendarData>();
     String sqlFormat = "update cal set shift=%d, title='%s', color='%s' where date=%d";
     Cursor c = openDb().rawQuery(String.format(sqlFormat, cal.shift, cal.title, cal.color, cal.date), null);
     c.moveToFirst();
