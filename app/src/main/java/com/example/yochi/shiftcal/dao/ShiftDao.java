@@ -87,6 +87,12 @@ public class ShiftDao {
     return result;
   }
 
+  // テーブル有無判定
+  public boolean isExistTable(String tableName){
+    String sqlFormat = "select count(*) from sqlite_master where type = 'table' and name = '%s'";
+
+  }
+
   private SQLiteDatabase openDb(){
     if(mydb == null){
       MySQLiteOpenHelper helper = new MySQLiteOpenHelper(context);
